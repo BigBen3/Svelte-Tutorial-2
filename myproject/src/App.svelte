@@ -1,26 +1,23 @@
 <script>
-	let name ="bob";
-	let beltColor = "black";
-	const handleClick = () =>{
-		beltColor = 'orange';
-	};
-
-	const handleInput = (e) =>{
-		beltColor = e.target.value;
-	}
-	
-
-
+  let people = [
+	{name: 'yoshi', beltColor: 'black', age: 25, id: 1},
+	{name: 'mario', beltColor: 'orange', age: 45, id: 2},
+	{name: 'luigi', beltColor: 'black', age: 35, id: 3},
+  ];
 
 </script>
 
 <main>
-	<h1>hhgt {name}!</h1>
-	<p style="color: {beltColor}"> {beltColor} belt</p>
-	<button on:click={handleClick}>Update belt color</button>
-	<!--<input type="text" on:input={handleInput} value={beltColor}>-->
-	<input type="text" bind:value={beltColor}>
+    {#each people as person (person.id)}
+		<div>
+			<h4>{person.name}</h4>
+			<p>{person.age} years old, {person.beltColor} belt.</p>
+		</div>
+		{:else}
+			<p>No people to show</p>
+	{/each}
 </main>
+
 
 <style>
 	main {
