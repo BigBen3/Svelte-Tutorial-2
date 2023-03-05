@@ -1,4 +1,6 @@
 <script>
+	import Modal from './Modal.svelte';
+
   let people = [
 	{name: 'yoshi', beltColor: 'black', age: 25, id: 1},
 	{name: 'mario', beltColor: 'orange', age: 45, id: 2},
@@ -13,14 +15,8 @@
 
 	let num = 1;
 </script>
- 
-		{#if num > 20}
-			<p>Greater than 20</p>
-		{:else if num > 5}
-			<p>greater than 5</p> 
-		{:else}
-			<p>not greater than 5</p>
-		{/if}
+	<!--gets the html from the modal component-->
+	<Modal />
 	 <main>
 	<!--you have the person id at the end because adds a unique key element to each item in the array links the html template to the array object-->
     {#each people as person (person.id)}
