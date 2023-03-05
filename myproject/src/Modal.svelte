@@ -1,11 +1,12 @@
 <script>
-    let showModal = false;
-
+    let showModal = true;
+    let isPromo = true;
 </script>
 
 {#if showModal}
-<div class="backdrop">
-    <div class="model">
+<!--this div will have an additional class name based on the value of isPromo if it is tru it gets promo if it is false it gets nothing-->
+<div class="backdrop" class:promo={isPromo}>
+    <div class="modal">
         <p>Signn up for offers!</p>
     </div>
 </div>
@@ -14,5 +15,25 @@
 
 
 <style>
+    .backdrop {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        background: rgba(0,0,0,0.8);
+    }
 
+    .modal {
+        padding: 10px;
+        border-radius: 10px;
+        max-width: 400px;
+        margin: 10% auto;
+        text-align: center;
+        background: white;
+    }
+
+
+    .promo .modal {
+        background: crimson;
+        color: white;
+    }
 </style>
