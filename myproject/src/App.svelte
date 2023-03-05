@@ -1,6 +1,7 @@
 <script>
 	import Modal from './Modal.svelte';
-
+	
+	let showModal = false;
   let people = [
 	{name: 'yoshi', beltColor: 'black', age: 25, id: 1},
 	{name: 'mario', beltColor: 'orange', age: 45, id: 2},
@@ -12,12 +13,15 @@
 		//so if the id is not equal to the id the it is true but if it does and it false and it filters that false on out
 		people = people.filter((person) => person.id != id) 
 	}
-
+	const toggleModal = () => {
+		showModal = !showModal
+	}
 	let num = 1;
 </script>
 	<!--gets the html from the modal component-->
-	<Modal message="I am a proper, value" isPromo={true}/>
+	<Modal message="I am a proper, value" isPromo={true} {showModal} on:click={toggleModal} />
 	 <main>
+		<button on:click={toggleModal}> Click me</button>
 	<!--you have the person id at the end because adds a unique key element to each item in the array links the html template to the array object-->
     {#each people as person (person.id)}
 		<div>
@@ -25,7 +29,7 @@
 			{#if person.beltColor === 'black'}
 				<strong><p>Master ninja</p></strong>
 			{/if}
-			<p>{person.age} years old, {person.beltColor} belt.</p>
+			<!--we want it to send the id to the handle click but only when the butotn is click so if we just had then handle click it and pass in the parameter it would not be a reference anymore and would be called autmatically so we use an arrow funciton that says when you click it it calls the handle click with the person id-->
 			<button on:click={() => handleClick(person.id)}>Delete</button>
 		</div>
 		{:else}
