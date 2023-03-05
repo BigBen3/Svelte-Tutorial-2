@@ -4,18 +4,39 @@
 	{name: 'mario', beltColor: 'orange', age: 45, id: 2},
 	{name: 'luigi', beltColor: 'black', age: 35, id: 3},
   ];
+	const handleClick = (id) => {
+		//so if they are equal it keeps checking if they are not equal it is false and it knows it found the right id and filters that person out of the array. 
+		// by filtering them out it takes the user out
+		//so if the id is not equal to the id the it is true but if it does and it false and it filters that false on out
+		people = people.filter((person) => person.id != id) 
+	}
 
+	let num = 1;
 </script>
-
-<main>
+ 
+		{#if num > 20}
+			<p>Greater than 20</p>
+		{:else if num > 5}
+			<p>greater than 5</p> 
+		{:else}
+			<p>not greater than 5</p>
+		{/if}
+	 <main>
+	<!--you have the person id at the end because adds a unique key element to each item in the array links the html template to the array object-->
     {#each people as person (person.id)}
 		<div>
 			<h4>{person.name}</h4>
+			{#if person.beltColor === 'black'}
+				<strong><p>Master ninja</p></strong>
+			{/if}
 			<p>{person.age} years old, {person.beltColor} belt.</p>
+			<button on:click={() => handleClick(person.id)}>Delete</button>
 		</div>
 		{:else}
 			<p>No people to show</p>
 	{/each}
+
+
 </main>
 
 
