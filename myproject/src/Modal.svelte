@@ -1,13 +1,14 @@
 <script>
-    let showModal = true;
-    let isPromo = true;
+    export let message = 'default value'; 
+    export let showModal = false;
+    export let isPromo = false;
 </script>
 
 {#if showModal}
 <!--this div will have an additional class name based on the value of isPromo if it is tru it gets promo if it is false it gets nothing-->
 <div class="backdrop" class:promo={isPromo}>
     <div class="modal">
-        <p>Signn up for offers!</p>
+        <p>{message}</p>
     </div>
 </div>
 

@@ -16,7 +16,7 @@
 	let num = 1;
 </script>
 	<!--gets the html from the modal component-->
-	<Modal />
+	<Modal message="I am a proper, value" isPromo={true}/>
 	 <main>
 	<!--you have the person id at the end because adds a unique key element to each item in the array links the html template to the array object-->
     {#each people as person (person.id)}
@@ -44,7 +44,7 @@
 		margin: 0 auto;
 	}
 
-	h1 {
+	h4 {
 		color: #ff3e00;
 		text-transform: uppercase;
 		font-size: 4em;
