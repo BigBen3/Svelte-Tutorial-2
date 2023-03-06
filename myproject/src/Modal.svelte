@@ -11,7 +11,6 @@
 <div class="backdrop" class:promo={isPromo} on:click|self>
     <div class="modal">
         <!--sltos are like props but let you pass more data and more complex data -->
-    <slot name="title"></slot>
     <slot></slot>
  
     </div>
