@@ -1,5 +1,5 @@
 <script>
-    export let message = 'default value'; 
+   
     export let showModal = false;
     export let isPromo = false;
 </script>
@@ -10,7 +10,10 @@
 <!--the self is an event modiffer it makes it so that the click is only called when you click on that specific div-->
 <div class="backdrop" class:promo={isPromo} on:click|self>
     <div class="modal">
-        <p>{message}</p>
+        <!--sltos are like props but let you pass more data and more complex data -->
+    <slot name="title"></slot>
+    <slot></slot>
+ 
     </div>
 </div>
 

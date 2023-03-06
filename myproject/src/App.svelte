@@ -2,6 +2,7 @@
 	import Modal from './Modal.svelte';
 	
 	let showModal = false;
+	let Promo = false;
   let people = [
 	{name: 'yoshi', beltColor: 'black', age: 25, id: 1},
 	{name: 'mario', beltColor: 'orange', age: 45, id: 2},
@@ -16,12 +17,27 @@
 	const toggleModal = () => {
 		showModal = !showModal
 	}
+
+	const togglePromo = () => {
+		Promo = !Promo
+	}
 	let num = 1;
 </script>
 	<!--gets the html from the modal component-->
-	<Modal message="I am a proper, value" isPromo={true} {showModal} on:click={toggleModal} />
+	<Modal isPromo={Promo} {showModal} on:click={toggleModal}> 
+		
+		<form>
+			<input type="text" placeholder="name">
+			<input type="text" placeholder="belt color">
+			<button>Add Person</button>
+		</form>
+		<div slot="title">
+			<h3>Add a New Person</h3>
+		</div>
+	</Modal>
 	 <main>
-		<button on:click|once={toggleModal}> Click me</button>
+		<button on:click={toggleModal}> Click me</button>
+		<button on:click={togglePromo}>Toggle Promo</button>
 	<!--you have the person id at the end because adds a unique key element to each item in the array links the html template to the array object-->
     {#each people as person (person.id)}
 		<div>
