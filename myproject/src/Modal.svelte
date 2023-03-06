@@ -7,7 +7,8 @@
 {#if showModal}
 <!--this div will have an additional class name based on the value of isPromo if it is tru it gets promo if it is false it gets nothing-->
 <!--event fowards to the parent which is the app.svelte and then calls it when you define hte modal-->
-<div class="backdrop" class:promo={isPromo} on:click>
+<!--the self is an event modiffer it makes it so that the click is only called when you click on that specific div-->
+<div class="backdrop" class:promo={isPromo} on:click|self>
     <div class="modal">
         <p>{message}</p>
     </div>

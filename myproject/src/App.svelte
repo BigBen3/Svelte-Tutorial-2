@@ -21,7 +21,7 @@
 	<!--gets the html from the modal component-->
 	<Modal message="I am a proper, value" isPromo={true} {showModal} on:click={toggleModal} />
 	 <main>
-		<button on:click={toggleModal}> Click me</button>
+		<button on:click|once={toggleModal}> Click me</button>
 	<!--you have the person id at the end because adds a unique key element to each item in the array links the html template to the array object-->
     {#each people as person (person.id)}
 		<div>
