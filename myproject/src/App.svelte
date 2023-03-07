@@ -22,31 +22,37 @@
 		Promo = !Promo
 	}
 	let num = 1;
+
+	const addPerson = (e) => {
+		const person = e.detail
+		//... is a spread operator
+		//place each object after the person 
+		people = [person, ...people];
+		showModal = false;
+	}
 </script>
 	<!--gets the html from the modal component-->
 	<Modal isPromo={Promo} {showModal} on:click={toggleModal}> 
-		<AddPersonForm />
+		<!--this form now emits a custom event -->
+		<AddPersonForm on:addPerson={addPerson}/>
 	
 	</Modal>
-	 <main>
-		<button on:click={toggleModal}> Click me</button>
+	<main>
+		<button on:click={toggleModal}>Click Me</button>
 		<button on:click={togglePromo}>Toggle Promo</button>
-	<!--you have the person id at the end because adds a unique key element to each item in the array links the html template to the array object-->
-    {#each people as person (person.id)}
-		<div>
+		{#each people as person (person.id)}
+		  <div>
 			<h4>{person.name}</h4>
-			{#if person.beltColor === 'black'}
-				<strong><p>Master ninja</p></strong>
+			{#if person.beltColour === 'black'}
+			  <p><strong>MASTER NINJA</strong></p>
 			{/if}
-			<!--we want it to send the id to the handle click but only when the butotn is click so if we just had then handle click it and pass in the parameter it would not be a reference anymore and would be called autmatically so we use an arrow funciton that says when you click it it calls the handle click with the person id-->
+			<p>{person.age} years old, {person.beltColour} belt.</p>
 			<button on:click={() => handleClick(person.id)}>Delete</button>
-		</div>
+		  </div>
 		{:else}
-			<p>No people to show</p>
-	{/each}
-
-
-</main>
+		  <p>There are no people to show...</p>
+		{/each}
+	  </main>
 
 
 <style>

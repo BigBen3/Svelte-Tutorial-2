@@ -1,12 +1,25 @@
 <script>
-    import { prevent_default } from "svelte/internal";
+    import { createEventDispatcher } from 'svelte';
+
+
+    let dispatch = createEventDispatcher();
 
     let name;
     let beltColor;
     let age;
     let skills = [];
     const handleSubmit = () => {
-        console.log(name, beltColor, age, skills)
+       const person = {
+        //would be like name:  name but if both variables are the same you can just do name, so I did that for all the variables 
+            name,
+            beltColor, 
+            age,
+            skills, 
+            id: Math.random() 
+       }
+       //it emits a custom event to the parent componenet which is the app.svelte so that we can add the person object to the person array. 
+       dispatch('addPerson', person);
+    
     }
 </script>
 
